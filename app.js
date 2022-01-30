@@ -4,7 +4,7 @@ const authorText=document.getElementById("author");
 const twitterBtn=document.getElementById("twitter");
 const newQuoteBtn=document.getElementById("new-quote");
 const loader=document.getElementById("loader");
-let color=[]
+let colors=["#ff0000","#ffa500","#008000","#0000ff","#4b0082","#000000","#290025"];
 
 function showLoadingSpinner(){
     loader.hidden=false;
@@ -28,6 +28,7 @@ async function getQuote(){
         apiQuotes=await respons.json();
         // pick random Quote from apiQuote array
         const quote=apiQuotes[Math.floor(Math.random() * apiQuotes.length)]
+        quoteText.style.color=colors[Math.floor(Math.random() * colors.length)];
         // Check if author feild is blank and replace it with "Unknown"
         if(!quote.author){
             authorText.textContent="Unknown";

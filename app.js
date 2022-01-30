@@ -28,13 +28,14 @@ async function getQuote(){
         apiQuotes=await respons.json();
         // pick random Quote from apiQuote array
         const quote=apiQuotes[Math.floor(Math.random() * apiQuotes.length)]
+        // Assign random color to quote
         quoteText.style.color=colors[Math.floor(Math.random() * colors.length)];
         // Check if author feild is blank and replace it with "Unknown"
         if(!quote.author){
             authorText.textContent="Unknown";
         }else{
             
-            authorText.textContent=quote.author;
+            authorText.textContent=`By. ${quote.author}`;
         }
         // check Quote lenght to determaine styling
         if(quote.text.length > 120){
